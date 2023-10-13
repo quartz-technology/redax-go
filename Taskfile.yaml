@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  unit-tests:
+    cmds:
+      - go test ./... -v
+    silent: true
+
+  unit-tests-race:
+    cmds:
+      - go test ./... --race -v
+    silent: true
+
+  lint:
+    cmds:
+      - golangci-lint run
+    silent: true
