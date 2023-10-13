@@ -33,7 +33,7 @@ func (o *BuilderBlocksReceived) EncodeToQueryParams() string {
 	}
 
 	if o.BuilderPublicKey != nil {
-		args = append(args, fmt.Sprintf("block_pubkey=%s", o.BuilderPublicKey))
+		args = append(args, fmt.Sprintf("builder_pubkey=%s", o.BuilderPublicKey))
 	}
 
 	if o.Limit > 0 {

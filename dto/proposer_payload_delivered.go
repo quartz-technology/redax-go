@@ -58,7 +58,13 @@ func (o *ProposerPayloadDelivered) EncodeToQueryParams() string {
 		args = append(args, fmt.Sprintf("limit=%d", o.Limit))
 	}
 
-	args = append(args, fmt.Sprintf("order_by=%s", o.OrderBy))
+	var orderBy ResultsOrder = o.OrderBy
+
+	if o.OrderBy == "" {
+		orderBy = IncreasingValue
+	}
+
+	args = append(args, fmt.Sprintf("order_by=%s", orderBy))
 
 	params := strings.Join(args, "&")
 	if len(params) > 0 {
