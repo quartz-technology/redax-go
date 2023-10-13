@@ -3,6 +3,7 @@ module github.com/quartz-technology/redax-go
 go 1.20
 
 require (
+	github.com/attestantio/go-builder-client v0.3.1
 	github.com/attestantio/go-eth2-client v0.18.3
 	github.com/ethereum/go-ethereum v1.13.3
 	github.com/stretchr/testify v1.8.4
@@ -13,6 +14,7 @@ require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/ferranbt/fastssz v0.1.3 // indirect
 	github.com/goccy/go-yaml v1.9.2 // indirect
+	github.com/holiman/uint256 v1.2.3 // indirect
 	github.com/klauspost/cpuid/v2 v2.1.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
