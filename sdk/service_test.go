@@ -11,6 +11,8 @@ import (
 )
 
 func TestService(t *testing.T) {
+	t.Parallel()
+
 	service, err := NewService("https://boost-relay.flashbots.net")
 	require.NoError(t, err)
 

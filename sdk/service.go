@@ -27,7 +27,9 @@ func NewService(relayBaseURL string) (*Service, error) {
 
 // NewServiceWithOptions creates a Service using the given options.
 func NewServiceWithOptions(opts ...ServiceOption) (*Service, error) {
-	sdk := &Service{}
+	sdk := &Service{
+		requester: nil,
+	}
 	cfg := newEmptyServiceConfiguration()
 
 	cfg.applyOptions(opts)

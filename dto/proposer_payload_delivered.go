@@ -58,7 +58,7 @@ func (o *ProposerPayloadDelivered) EncodeToQueryParams() string {
 		args = append(args, fmt.Sprintf("limit=%d", o.Limit))
 	}
 
-	var orderBy ResultsOrder = o.OrderBy
+	orderBy := o.OrderBy
 
 	if o.OrderBy == "" {
 		orderBy = IncreasingValue
