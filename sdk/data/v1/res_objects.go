@@ -1,4 +1,4 @@
-package ro
+package v1
 
 import (
 	"math/big"
@@ -6,7 +6,14 @@ import (
 	v1 "github.com/attestantio/go-builder-client/api/v1"
 )
 
-type BuilderBlocksReceivedRO struct {
+type BidsDelivered struct {
+	v1.BidTrace
+
+	BlockNumber *big.Int `json:"block_number"`
+	NumTx       uint     `json:"num_tx"`
+}
+
+type BidsReceived struct {
 	v1.BidTrace
 
 	BlockNumber          *big.Int `json:"block_number"`
