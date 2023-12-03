@@ -24,6 +24,10 @@ func (dataV1 *SDK) GetBidsDelivered(ctx context.Context, params *GetBidsDelivere
 		params = new(GetBidsDeliveredRequest)
 	}
 
+	if err := params.validate(); err != nil {
+		return nil, NewDataSDKError("GetBidsDelivered", err)
+	}
+
 	//nolint:exhaustruct
 	relayReq := &relay.Request{
 		Method: "GET",

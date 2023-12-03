@@ -82,6 +82,14 @@ func (r *GetBidsDeliveredRequest) WithOrder(order ResultsOrder) *GetBidsDelivere
 	return r
 }
 
+func (r *GetBidsDeliveredRequest) validate() error {
+	if r.queryParams.Has("slot") && r.queryParams.Has("cursor") {
+		return ErrConflictingParams
+	}
+
+	return nil
+}
+
 type GetBidsReceivedRequest struct {
 	queryParams url.Values
 }
@@ -132,10 +140,6 @@ func (r *GetBidsReceivedRequest) validate() error {
 	if !r.queryParams.Has("slot") && !r.queryParams.Has("block_hash") && !r.queryParams.Has(
 		"block_number") && !r.queryParams.Has("builder_pubkey") {
 		return ErrMissingMandatoryParam
-	}
-
-	if r.queryParams.Has("slot") && r.queryParams.Has("cursor") {
-		return ErrConflictingParams
 	}
 
 	return nil
