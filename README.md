@@ -11,8 +11,35 @@ go get github.com/quartz-technology/redax-go
 
 ### Examples
 
-_Coming soon ! For now, you can refer to the tests to get a basic understanding of how the SDK
-works._
+_More examples will come soon !_
+
+```go
+package test
+
+import (
+	"context"
+	"fmt"
+	"testing"
+
+	"github.com/quartz-technology/redax-go/relay"
+	"github.com/quartz-technology/redax-go/sdk"
+	"github.com/stretchr/testify/require"
+)
+
+func TestRedaxSDK(t *testing.T) {
+	client, err := relay.NewClient(relay.WithAPIURL("https://boost-relay.flashbots.net"))
+	require.NoError(t, err)
+
+	relaySDK := sdk.NewRelaySDK(client)
+
+	// Get the bids delivered.
+	bidsDelivered, err := relaySDK.Data().V1().GetBidsDelivered(context.Background(), nil)
+	require.NoError(t, err)
+
+	// Print the first bid's value.
+	fmt.Println(bidsDelivered[0].Value.String())
+}
+```
 
 ### API
 
