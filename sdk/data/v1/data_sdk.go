@@ -19,7 +19,7 @@ func NewSDK(client *relay.Client) *SDK {
 	}
 }
 
-func (dataV1 *SDK) GetBidsDelivered(ctx context.Context, params *GetBidsDeliveredRequest) ([]*BidsDelivered, error) {
+func (dataV1 *SDK) GetBidsDelivered(ctx context.Context, params *GetBidsDeliveredRequest) ([]*BidDelivered, error) {
 	if params == nil {
 		params = new(GetBidsDeliveredRequest)
 	}
@@ -35,7 +35,7 @@ func (dataV1 *SDK) GetBidsDelivered(ctx context.Context, params *GetBidsDelivere
 		Query:  params.queryParams,
 	}
 
-	resp := make([]*BidsDelivered, 0)
+	resp := make([]*BidDelivered, 0)
 
 	if err := dataV1.client.Do(ctx, relayReq, &resp); err != nil {
 		return nil, NewDataSDKError("GetBidsDelivered", err)
@@ -44,7 +44,7 @@ func (dataV1 *SDK) GetBidsDelivered(ctx context.Context, params *GetBidsDelivere
 	return resp, nil
 }
 
-func (dataV1 *SDK) GetBidsReceived(ctx context.Context, params *GetBidsReceivedRequest) ([]*BidsReceived, error) {
+func (dataV1 *SDK) GetBidsReceived(ctx context.Context, params *GetBidsReceivedRequest) ([]*BidReceived, error) {
 	if params == nil {
 		return nil, NewDataSDKError("GetBidsReceived", ErrMissingMandatoryParam)
 	}
@@ -60,7 +60,7 @@ func (dataV1 *SDK) GetBidsReceived(ctx context.Context, params *GetBidsReceivedR
 		Query:  params.queryParams,
 	}
 
-	resp := make([]*BidsReceived, 0)
+	resp := make([]*BidReceived, 0)
 
 	if err := dataV1.client.Do(ctx, relayReq, &resp); err != nil {
 		return nil, NewDataSDKError("GetBidsReceived", err)
